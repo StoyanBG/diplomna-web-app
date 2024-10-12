@@ -1,5 +1,12 @@
 {
-    "routes": [
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
       { "src": "/api/register", "dest": "/api/register.js" },
       { "src": "/api/login", "dest": "/api/login.js" },
       { "src": "/api/save-choice", "dest": "/api/save-choice.js" },
@@ -9,5 +16,13 @@
       { "src": "/api/respond-message", "dest": "/api/respond-message.js" },
       { "src": "/api/check-auth", "dest": "/api/check-auth.js" }
     ]
+  ],
+  "functions": {
+    "api/*.js": {
+      "memory": 3008, // Set memory limit for functions
+      "maxDuration": 10 // Set maximum duration for functions (in seconds)
+    }
   }
+}
+
   
