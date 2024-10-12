@@ -9,7 +9,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
       return;
     }
 
-    fetch('../api/register.js', {
+    fetch('../api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

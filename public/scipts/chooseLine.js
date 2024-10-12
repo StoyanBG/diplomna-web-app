@@ -20,7 +20,7 @@ function saveChoice() {
     if (l36.checked) chosenLines.push(l36.value);
 
     // Send a POST request to save the user's choices
-    fetch('../api/save-choice.js', {
+    fetch('../api/save-choice', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
