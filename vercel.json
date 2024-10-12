@@ -1,0 +1,13 @@
+{
+    "routes": [
+      { "src": "/api/register", "dest": "/api/register.js" },
+      { "src": "/api/login", "dest": "/api/login.js" },
+      { "src": "/api/save-choice", "dest": "/api/save-choice.js" },
+      { "src": "/api/selected-lines", "dest": "/api/selected-lines.js" },
+      { "src": "/api/get-complaints", "dest": "/api/get-complaints.js" },
+      { "src": "/api/send-message", "dest": "/api/send-message.js" },
+      { "src": "/api/respond-message", "dest": "/api/respond-message.js" },
+      { "src": "/api/check-auth", "dest": "/api/check-auth.js" }
+    ]
+  }
+  
