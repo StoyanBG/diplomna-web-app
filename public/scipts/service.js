@@ -3,7 +3,7 @@ document.getElementById('complaintForm').addEventListener('submit', function (e)
     const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
 
-    fetch('../../api/send-message', {
+    fetch('../../api/send-message.js', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ document.getElementById('main-page-button').addEventListener('click', function(e
     event.preventDefault(); // Prevent the default anchor click behavior
 
     // Check authentication status
-    fetch('../../api/check-auth')
+    fetch('../../api/check-auth.js')
         .then(response => response.json())
         .then(data => {
             if (data.isAuthenticated) {
