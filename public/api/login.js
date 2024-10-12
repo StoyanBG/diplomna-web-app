@@ -1,30 +1,25 @@
-// api/login.js
-const { admin, sessionMiddleware, corsOptions } = require('../firebaseAdmin');
-const express = require('express');
-const cors = require('cors');
+import { admin } from './firebaseAdmin.js'; // Ensure this points to your Firebase admin setup
 
-const app = express();
+export default async (req, res) => {
+  // Check for the request method
+  if (req.method === 'POST') {
+    const { email, password } = req.body;
 
-// Use necessary middlewares
-app.use(express.json());
-app.use(sessionMiddleware);
-app.use(cors(corsOptions));
+    try {
+      // Fetch user by email
+      const userRecord = await admin.auth().getUserByEmail(email);
 
-app.post(async (req, res) => {
-  const { email, password } = req.body;
+      // Set userId in session (you might want to validate the password on the client side)
+      req.session.userId = userRecord.uid;
 
-  try {
-    // Firebase does not support server-side password authentication directly.
-    // You should validate the ID token sent from the client.
-    // Here, we'll check if the user exists.
-    const user = await admin.auth().getUserByEmail(email);
-    
-    // Set userId in the session after successful login
-    req.session.userId = user.uid;
-    res.json({ message: 'User logged in successfully' });
-  } catch (error) {
-    res.status(404).json({ error: 'User not found or invalid credentials' });
+      res.status(200).json({ message: 'User logged in successfully' });
+    } catch (error) {
+      // Handle errors (user not found or invalid credentials)
+      res.status(404).json({ error: 'User not found or invalid credentials' });
+    }
+  } else {
+    // Handle method not allowed
+    res.setHeader('Allow', ['POST']);
+    res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
-});
-
-module.exports = app;
+};
