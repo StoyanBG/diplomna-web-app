@@ -2,7 +2,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
   event.preventDefault();
   const formData = new FormData(this);
 
-  fetch('../../api/login.js', {  // Make sure this points to your Vercel login endpoint
+  fetch('../api/login.js', {  // Make sure this points to your Vercel login endpoint
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
