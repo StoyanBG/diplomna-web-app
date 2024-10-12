@@ -2,7 +2,7 @@
  document.addEventListener('DOMContentLoaded', fetchComplaints);
 
  function fetchComplaints() {
-fetch('../api/get-complaints')
+fetch('/api/get-complaints')
  .then(response => response.json())
  .then(complaints => {
      console.log('Fetched complaints:', complaints); // Log complaints for debugging
@@ -46,7 +46,7 @@ fetch('../api/get-complaints')
      const messageId = document.getElementById('messageId').value;
      const response = document.getElementById('response').value;
 
-     fetch('../api/respond-message', {
+     fetch('/api/respond-message', {
          method: 'POST',
          headers: {
              'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ fetch('../api/get-complaints')
  });
 
  function redirectToComplaintPage() {
-     fetch('../api/check-auth', {
+     fetch('/api/check-auth', {
          method: 'GET',
          credentials: 'include'
      })
@@ -84,7 +84,7 @@ fetch('../api/get-complaints')
      event.preventDefault(); // Prevent the default anchor click behavior
 
      // Check authentication status
-     fetch('../api/check-auth')
+     fetch('/api/check-auth')
          .then(response => response.json())
          .then(data => {
              if (data.isAuthenticated) {

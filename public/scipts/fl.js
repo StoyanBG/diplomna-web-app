@@ -1,5 +1,5 @@
 // Fetch selected lines for the current user from the server
-fetch('../api/selected-lines')
+fetch('/api/selected-lines')
 .then(response => response.json()) // Parse the response as JSON
 .then(lineIds => {
   // Ensure that lineIds is an array
@@ -38,7 +38,7 @@ document.getElementById('main-page-button').addEventListener('click', function(e
       event.preventDefault(); // Prevent the default anchor click behavior
 
       // Check authentication status
-      fetch('../api/check-auth')
+      fetch('/api/check-auth')
           .then(response => response.json())
           .then(data => {
               if (data.isAuthenticated) {

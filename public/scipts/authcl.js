@@ -2,7 +2,7 @@ document.getElementById('main-page-button').addEventListener('click', function(e
     event.preventDefault(); // Prevent the default anchor click behavior
 
     // Check authentication status
-    fetch('../api/check-auth')
+    fetch('/api/check-auth')
         .then(response => response.json())
         .then(data => {
             if (data.isAuthenticated) {
