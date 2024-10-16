@@ -1,4 +1,4 @@
-import { admin } from './firebaseAdmin.js'; // Ensure this points to your Firebase admin setup
+import { admin } from '../firebaseAdmin.js'; // Ensure this points to your Firebase admin setup
 
 export default async (req, res) => {
   // Check for the request method
